@@ -11,7 +11,7 @@ public class HelloApplication {
 
 	@GetMapping("/")
 	public String message() {
-		return "The Project";
+		return "GIT => Maven => Jenkins => Docker => Ansible";
 	}
 
 	public static void main(String[] args) {
