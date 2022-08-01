@@ -1,4 +1,4 @@
-# devops-project
+# Devopss project
 Spring boot application CI CD
 
 ## Tools
