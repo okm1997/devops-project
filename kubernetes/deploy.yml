@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloproject
+  labels:
+    app: projectapp
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: projectapp
+
+  template:
+    metadata:
+      labels:
+        app: projectapp
+    spec:
+      containers:
+        - name: projectapp
+          image: okm1997/project:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              pu: "0.2"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1

@@ -1,0 +1,13 @@
+---
+- hosts: kubernetes
+  user: root
+
+  tasks:
+- name: deploy project on kubernetes
+  command: kubectl apply -f deploy.yml
+
+- name: create service oncluster
+  command: kubectl apply -f service.yml
+
+- name: updatedeployment
+  command: kubectl rollout restart deployment.apps/projectapp

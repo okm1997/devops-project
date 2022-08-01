@@ -1,0 +1,18 @@
+---
+- hosts: dockerhost
+
+  tasks:
+    - name: stop existing container
+      command: docker stop project-server
+      ignore_errors: yes
+
+    - name: remove existing container
+      command: docker rm project-server
+      ignore_errors: yes
+
+    - name: remove existing image
+      command: docker rmi okm1997/project:v1
+      ignore_errors: yes
+
+    - name: create container
+      command: docker run -d --name project-server -p 8080:8080 okm1997/project:v1

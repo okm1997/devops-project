@@ -1,0 +1,14 @@
+---
+- hosts: ansible
+
+  tasks:
+    - name: create docker image
+      command: docker build -t project:v1 .
+      args:
+        chdir: /opt/docker
+
+    - name: create tags to push
+      command: docker tag project:v1 okm1997/project:v1
+
+    - name: push docker image
+      command: docker push okm1997/project:v1
